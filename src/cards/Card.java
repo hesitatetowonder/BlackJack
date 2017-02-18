@@ -12,11 +12,6 @@ public class Card {
 		this.value = value;
 	}
 	
-	@Override
-	public String toString() {
-		return "Card [suits=" + suits + ", name=" + name + ", value=" + value + "]";
-	}
-
 	public String getSuits() {
 		return suits;
 	}
@@ -40,5 +35,11 @@ public class Card {
 	public void setValue(int value) {
 		this.value = value;
 	}
+	
+	@Override
+	public String toString() {
+		return "Card [suits=" + suits + ", name=" + name + ", value=" + value + "]";
+	}
+
 
 }

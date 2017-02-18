@@ -5,7 +5,7 @@ import java.util.*;
 public class Deck {
 	private List<Card> theDeck = new ArrayList<>();
 
-	public void buildDeck() {
+	public List<Card> buildDeck() {
 		String[] s = { "Hearts", "Spades", "Clubs", "Diamonds" };
 		String[] card = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",
 				"Queen", "King" };
@@ -25,6 +25,13 @@ public class Deck {
 				}
 			}
 		}
-		Collections.shuffle(theDeck);
+		return theDeck;
+	}
+	
+	public List<Card> shuffle(List<Card> deck){
+		System.out.println("Preshuffle : " + deck);
+		Collections.shuffle(deck);
+		System.out.println("Postshuffle : " + deck);
+		return deck;
 	}
 }
