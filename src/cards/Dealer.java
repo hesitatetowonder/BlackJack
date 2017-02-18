@@ -21,7 +21,6 @@ public class Dealer {
 			System.exit(0);
 		}
 		shuffleUpAndDealDealer(deck, playerHand);
-		System.out.println("Deck is : " +  deck + deck.size());
 		p1.hand(deck, playerHand);
 
 	}
