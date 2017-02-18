@@ -9,6 +9,6 @@ public static void main(String[] args) {
 	Dealer dealer = new Dealer();
 	
 	newDeck = bicycle.buildDeck();
-	dealer.shuffleUpAndDeal(newDeck);
+	dealer.shuffleUpAndDealPlayer(newDeck);
 }
 }
