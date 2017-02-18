@@ -3,31 +3,30 @@ package cards;
 import java.util.*;
 
 public class Dealer {
+	Player p1 = new Player();
 	List<Card> dealDeck = new ArrayList<Card>();
-	List<Integer> playerHand = new ArrayList<>();
-	List<Integer> dealerHand = new ArrayList<>();
-	Card card1;
-	Card card2;
-	Card dealerCard1;
-	Card dealerCard2;
+    int playerHand, dealerHand, newHand;
+	Card card1, card2, dealerCard1, dealerCard2;
 
-	public List<Integer> shuffleUpAndDealPlayer(List<Card> deck) {
+	public void shuffleUpAndDealPlayer(List<Card> deck) {
+		Collections.shuffle(deck);
 		card1 = deck.remove(0);
 		card2 = deck.remove(1);
 		System.out.print("You have been dealt : " + card1 + " and " + card2);
 		System.out.println("");
-		if ((card1.getValue() + card2.getValue()) == 21) {
+		
+		playerHand = (card1.getValue()+card2.getValue());
+		if (playerHand == 21) {
 			System.out.println("BLACKJACK!!!!!! You win!!!");
-			return playerHand;
+			System.exit(0);
 		}
-		playerHand.add(card1.getValue()+card2.getValue());
-		shuffleUpAndDealDealer(deck);
-		return playerHand;
+		shuffleUpAndDealDealer(deck, playerHand);
+		System.out.println("Deck is : " +  deck + deck.size());
+		p1.hand(deck, playerHand);
 
 	}
 
-	public List<Integer> shuffleUpAndDealDealer(List<Card> deck) {
-		Collections.shuffle(deck);
+	public List<Card> shuffleUpAndDealDealer(List<Card> deck, int playerHand) {
 		dealerCard1 = deck.remove(0);
 		dealerCard2 = deck.remove(1);
 		if (dealerCard1.getName().equals("Ace")) {
@@ -35,10 +34,17 @@ public class Dealer {
 		} else {
 			System.out.println("The Dealer is showing a : " + dealerCard1);
 		}
-		if ((dealerCard1.getValue() + dealerCard2.getValue()) == 21) {
+		dealerHand = dealerCard1.getValue() + dealerCard2.getValue();
+		if (dealerHand== 21) {
 			System.out.println("");
 			System.out.println("Sorry, dealer has BLACKJACK!!!!!! You lose.");
+			System.exit(0);
 		}
-		return dealerHand;
+		return deck;
+	}
+	
+	public Card hit(List<Card> deck){
+		Card card3 = deck.remove(0);
+		return card3;
 	}
 }
