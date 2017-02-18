@@ -5,13 +5,13 @@ import java.util.*;
 public class Player {
 	Scanner kb = new Scanner(System.in);
 
-	public int hand(List<Card> deck, int playerHand) {
+	public void hand(List<Card> deck, int playerHand, int dealerHand, Card dealerCard2) {
+		Dealer dealer = new Dealer();
 		System.out.println("The value of your hand is currently : " + playerHand);
 		System.out.println("Would you like to (H)it or (S)tay? ");
 		String choice = kb.next();
-			Dealer dealer = new Dealer();
 			while ((choice.equals("H"))||(choice.equals("h"))){
-				Card card3 = dealer.hit(deck);
+				Card card3 = hit(deck);
 				System.out.print("your new card is : " + card3);
 				System.out.println("");
 				playerHand += card3.getValue();
@@ -29,7 +29,14 @@ public class Player {
 					choice = kb.next();
 				}
 			}
-			System.out.println("The final value of your hand is : " + playerHand);	
-			return playerHand;
+			System.out.println("The final value of your hand is : " + playerHand);
+			dealer.dealerPlay(deck, playerHand, dealerHand, dealerCard2);
+			
+	}
+	
+	
+	public Card hit(List<Card> deck){
+		Card card3 = deck.remove(0);
+		return card3;
 	}
 }

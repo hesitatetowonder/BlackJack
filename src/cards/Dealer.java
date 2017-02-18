@@ -5,45 +5,67 @@ import java.util.*;
 public class Dealer {
 	Player p1 = new Player();
 	List<Card> dealDeck = new ArrayList<Card>();
-    int playerHand, dealerHand, newHand;
+	int playerHand, dealerHand, newHand;
 	Card card1, card2, dealerCard1, dealerCard2;
 
 	public void shuffleUpAndDealPlayer(List<Card> deck) {
 		Collections.shuffle(deck);
 		card1 = deck.remove(0);
-		card2 = deck.remove(1);
+		card2 = deck.remove(0);
 		System.out.print("You have been dealt : " + card1 + " and " + card2);
 		System.out.println("");
-		
-		playerHand = (card1.getValue()+card2.getValue());
+
+		playerHand = (card1.getValue() + card2.getValue());
 		if (playerHand == 21) {
 			System.out.println("BLACKJACK!!!!!! You win!!!");
 			System.exit(0);
 		}
 		shuffleUpAndDealDealer(deck, playerHand);
-		p1.hand(deck, playerHand);
-
 	}
 
-	public List<Card> shuffleUpAndDealDealer(List<Card> deck, int playerHand) {
+	public void shuffleUpAndDealDealer(List<Card> deck, int playerHand) {
 		dealerCard1 = deck.remove(0);
-		dealerCard2 = deck.remove(1);
+		dealerCard2 = deck.remove(0);
 		if (dealerCard1.getName().equals("Ace")) {
 			System.out.println("The Dealer is showing an : " + dealerCard1);
 		} else {
 			System.out.println("The Dealer is showing a : " + dealerCard1);
 		}
 		dealerHand = dealerCard1.getValue() + dealerCard2.getValue();
-		if (dealerHand== 21) {
+		if (dealerHand == 21) {
 			System.out.println("");
 			System.out.println("Sorry, dealer has BLACKJACK!!!!!! You lose.");
 			System.exit(0);
 		}
-		return deck;
+		p1.hand(deck, playerHand, dealerHand, dealerCard2);
 	}
-	
-	public Card hit(List<Card> deck){
-		Card card3 = deck.remove(0);
-		return card3;
+
+	public void dealerPlay(List<Card> deck, int playerHand, int dealerHand, Card dealerCard2) {
+		Card dealerCard3;
+		System.out.print("Dealer reveals second card to be : " + dealerCard2);
+		System.out.print("\nDealer's current total is : " + dealerHand);
+		while (dealerHand <= 16) {
+			System.out.println("\nThat is less than or equal to 16 so dealer hits: ");
+			dealerCard3 = deck.remove(0);
+		System.out.print("Card is : " + dealerCard3);
+			dealerHand += dealerCard3.getValue();
+			if (dealerHand > 21) {
+				System.out.println("\nBUSTED, Dealer is out, You Win!");
+				System.exit(0);
+			}
+		}
+		System.out.print("\nThat brings the dealer's total to : " + dealerHand);
+		System.out.println("");
+		System.out.print("Your total is : " + playerHand);
+		System.out.println("");
+		if (dealerHand > playerHand) {
+			System.out.println("Sorry you lose.");
+		} else if (dealerHand < playerHand) {
+			System.out.println("You win!! Congratulations");
+		} else {
+			System.out.println("It's a push.....no winner.");
+		}
+
 	}
+
 }
