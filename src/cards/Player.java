@@ -30,13 +30,16 @@ public class Player {
 				hand(playerHand, dealerHand, deck);
 			} else if (player == 21) {
 				System.out.println("That's 21, worst you can do is a push, let's see what the dealer gets...");
-				dealer.dealerPlay(player, playerHand, dealerHand, deck);
+				dealer.dealerPlay(playerHand, dealerHand, deck);
 			} else if (player > 21) {
 				for (int i = 0; i < playerHand.size(); i++) {
+					if (player > 21){
 					if (playerHand.get(i).getValue() == 11){
 						playerHand.get(i).setValue(1);
-						System.out.println("If Ace is 11 you bust, so Ace will be 1");
+						System.out.println("If your " + playerHand.get(i).getName() + " of " + playerHand.get(i).getSuits()
+											+ " is 11 you bust so it is now 1");
 						player -= 10;
+					}
 					}
 				}
 				if (player < 22){
@@ -46,7 +49,7 @@ public class Player {
 				playAgain();
 			}
 		}
-		dealer.dealerPlay(player, playerHand, dealerHand, deck);
+		dealer.dealerPlay(playerHand, dealerHand, deck);
 	}
 	
 	public void playAgain(){
@@ -60,5 +63,12 @@ public class Player {
 		else{
 			System.exit(0);
 		}
+	}
+		public int playerTotal(List<Card> playerHand){
+			int total = 0;
+			for (int i = 0; i < playerHand.size(); i++) {
+				total += playerHand.get(i).getValue();
+			}
+			return total;
 	}
 }
