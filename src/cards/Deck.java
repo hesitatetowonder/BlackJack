@@ -5,7 +5,7 @@ import java.util.*;
 public class Deck {
 	private List<Card> theDeck = new ArrayList<>();
 
-	public List<Card> buildDeck() {
+	protected List<Card> buildDeck() {
 		String[] s = { "Hearts", "Spades", "Clubs", "Diamonds" };
 		String[] card = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",
 				"Queen", "King" };

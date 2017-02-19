@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Dealer {
 	Player p1 = new Player();
-	List<Card> dealDeck = new ArrayList<Card>();
 	int playerHand, dealerHand, newHand;
 	Card card1, card2, dealerCard1, dealerCard2;
 
