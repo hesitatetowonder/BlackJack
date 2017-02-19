@@ -1,5 +1,21 @@
 # Greg's BlackJack project
 This is a classic game of BlackJack.
+There are 5 classes.
+The Card class holds the card structure and creates the cards.
+
+The Deck class assembles a standard 52 card deck.
+
+The Dealer class shuffles the deck and deals the cards to the player
+and himself as well as playing his hand(hits at 16 stays at 17 and up)
+
+The Player class allows the player to control his hand(hit or stay)
+
+The BlackJack class gets the deck from the Deck class and passes
+it to the Dealer to begin the game.
+
+Aces begin as 11 and will be changed(one at a time) to 1
+to avoid player or dealer going over 21, player will be
+informed if the Ace value is changed.
 The player will be dealt two cards.
 If they get BlackJack(21) they win
 The dealer will be dealt two cards(one face up one face down).
