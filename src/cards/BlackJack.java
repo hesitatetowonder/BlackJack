@@ -17,5 +17,6 @@ public class BlackJack {
 			newDeck = bicycle.buildDeck();
 			dealer.shuffleUpAndDealPlayer(newDeck);
 	}
+		
 }
 
