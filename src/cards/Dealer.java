@@ -18,7 +18,7 @@ public class Dealer {
 		playerHand = (card1.getValue() + card2.getValue());
 		if (playerHand == 21) {
 			System.out.println("BLACKJACK!!!!!! You win!!!");
-			System.exit(0);
+			p1.playAgain();
 		}
 		shuffleUpAndDealDealer(deck, playerHand);
 	}
@@ -35,7 +35,7 @@ public class Dealer {
 		if (dealerHand == 21) {
 			System.out.println("");
 			System.out.println("Sorry, dealer has BLACKJACK!!!!!! You lose.");
-			System.exit(0);
+			p1.playAgain();
 		}
 		p1.hand(deck, playerHand, dealerHand, dealerCard2);
 	}
@@ -51,7 +51,7 @@ public class Dealer {
 			dealerHand += dealerCard3.getValue();
 			if (dealerHand > 21) {
 				System.out.println("\nBUSTED, Dealer is out, You Win!");
-				System.exit(0);
+				p1.playAgain();
 			}
 		}
 		System.out.print("\nThat brings the dealer's total to : " + dealerHand);
@@ -60,10 +60,13 @@ public class Dealer {
 		System.out.println("");
 		if (dealerHand > playerHand) {
 			System.out.println("Sorry you lose.");
+			p1.playAgain();
 		} else if (dealerHand < playerHand) {
 			System.out.println("You win!! Congratulations");
+			p1.playAgain();
 		} else {
 			System.out.println("It's a push.....no winner.");
+			p1.playAgain();
 		}
 
 	}
